@@ -64,6 +64,28 @@ const navLinks = $$('nav a[href^="#"]');
 const navSections = navLinks
   .map(link => $(link.getAttribute('href')))
   .filter(Boolean);
+const navMenu = $('nav');
+const navToggle = $('.nav-toggle');
+
+function setNavMenuOpen(isOpen) {
+  navMenu.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  navToggle.querySelector('span').textContent = isOpen ? 'Close' : 'Menu';
+}
+
+navToggle.addEventListener('click', () => {
+  setNavMenuOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+});
+navLinks.forEach(link => link.addEventListener('click', () => setNavMenuOpen(false)));
+document.addEventListener('click', event => {
+  if (!navMenu.contains(event.target)) setNavMenuOpen(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+    setNavMenuOpen(false);
+    navToggle.focus();
+  }
+});
 const floatingItems = $$('.fl').map(element => ({
   element,
   section: element.closest('section'),

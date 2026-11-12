@@ -13,7 +13,14 @@
 </head>
 <body>
 <div class="bar" aria-hidden="true"></div>
-<nav aria-label="Main"><a href="#about">Hello</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#samples">Samples</a><a href="#quote">Get a quote</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Main">
+ <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+  <span>Menu</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+ </button>
+ <div class="nav-links" id="nav-links">
+  <a href="#about">Hello</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#samples">Samples</a><a href="#quote">Get a quote</a><a href="#contact">Contact</a>
+ </div>
+</nav>
 <main>
 
 <section class="hero" id="top">
